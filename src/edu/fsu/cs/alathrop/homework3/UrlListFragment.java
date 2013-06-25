@@ -16,4 +16,3 @@ public class UrlListFragment extends Fragment {
 	}
 
 }
-//x

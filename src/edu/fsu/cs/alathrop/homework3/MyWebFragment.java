@@ -15,4 +15,3 @@ public class MyWebFragment extends Fragment {
 	}
 
 }
-//x
