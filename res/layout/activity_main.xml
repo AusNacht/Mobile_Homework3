@@ -3,18 +3,22 @@
     android:layout_height="fill_parent"
     android:orientation="horizontal" >
 
-    <fragment
+    <FrameLayout
         android:id="@+id/urllist"
-        android:name="edu.fsu.cs.alathrop.homework3.UrlListFragment"
+        
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 
-    <fragment
+    <!-- android:name="edu.fsu.cs.alathrop.homework3.UrlListFragment" -->
+    
+    <FrameLayout
         android:id="@+id/webfragment"
-        android:name="edu.fsu.cs.alathrop.homework3.MyWebFragment"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
+    
+            <!-- android:name="edu.fsu.cs.alathrop.homework3.MyWebFragment" -->
 
 </LinearLayout>

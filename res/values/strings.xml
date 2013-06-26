@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Homework3</string>
+    <string name="app_name">Mobile_Homework3</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_url_list_fragment">UrlListFragment</string>
     <string name="title_activity_my_web_fragment">MyWebFragment</string>
+    <string name="google_url">http://www.google.com</string>
+    <string name="lifehacker_url">http://www.lifehacker.com</string>
+    <string name="cs_url">http://mobile.cs.fsu.edu/android</string>
+    <string name="sms_url">Your URL</string>
 
 </resources>

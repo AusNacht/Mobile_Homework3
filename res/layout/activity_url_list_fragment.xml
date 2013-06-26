@@ -8,9 +8,46 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".UrlListFragment" >
 
-    <ListView 
-        android:layout_width = "fill_parent"
+   
+    <!-- 
+    <TextView
+        android:id="@+id/cs_textview"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/urllist"></ListView>
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="@string/cs_url"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/sms_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lifehacker_textview"
+        android:layout_below="@+id/lifehacker_textview"
+        android:layout_marginTop="50dp"
+        android:text="@string/sms_url"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/lifehacker_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/google_textview"
+        android:layout_below="@+id/google_textview"
+        android:layout_marginTop="50dp"
+        android:text="@string/lifehacker_url"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/google_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/cs_textview"
+        android:layout_marginTop="50dp"
+        android:text="@string/google_url"
+        android:textAppearance="?android:attr/textAppearanceLarge" /> -->
 
 </RelativeLayout>
