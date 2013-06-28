@@ -28,14 +28,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
+        <fragment
             android:name="edu.fsu.cs.alathrop.homework3.UrlListFragment"
             android:label="@string/title_activity_url_list_fragment" >
-        </activity>
-        <activity
+        </fragment>
+        <fragment
             android:name="edu.fsu.cs.alathrop.homework3.MyWebFragment"
             android:label="@string/title_activity_my_web_fragment" >
-        </activity>
+        </fragment>
         <receiver android:name="urlReceiver">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />

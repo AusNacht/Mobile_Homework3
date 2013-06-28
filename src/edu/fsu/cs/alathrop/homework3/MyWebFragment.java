@@ -11,7 +11,7 @@ import android.webkit.WebViewClient;
 
 public class MyWebFragment extends Fragment {
 
-	WebView webs;
+	public WebView webs;
 	public String website;
 
 	@Override

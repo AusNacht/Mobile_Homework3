@@ -15,14 +15,14 @@ public class MainActivity extends Activity {
 	public String newUrl;
 	public String selectedUrl;
 
-	urlReceiver receiver;
+	public urlReceiver receiver;
 
-	FragmentManager manager1;
-	FragmentTransaction trans1;
-	UrlListFragment fragment1;
-	FragmentManager manager2;
-	FragmentTransaction trans2;
-	MyWebFragment fragment2;
+	public FragmentManager manager1;
+	public FragmentTransaction trans1;
+	public UrlListFragment fragment1;
+	public FragmentManager manager2;
+	public FragmentTransaction trans2;
+	public MyWebFragment fragment2;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,7 @@ public class MainActivity extends Activity {
 		if (bundle != null) {
 			this.newUrl = bundle.getString("newUrl");
 			this.newUrl = this.urlConverter(newUrl);
+			Log.i("Main", "Before Change URL List");
 			//this.changeUrl(this.newUrl);
 			Log.i("Main", "Before Change Webpage");
 			//this.changeWebpage(this.newUrl);
