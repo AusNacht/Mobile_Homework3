@@ -19,6 +19,10 @@ public class MyWebFragment extends Fragment {
 			Bundle state) {
 		this.website = getString(R.string.cs_url);
 
+		if(webs != null){
+			webs.destroy();
+		}
+		
 		this.webs = new WebView(this.getActivity());
 		this.webs.setWebViewClient(new MyWebViewClient());
 		this.webs.loadUrl(this.website);

@@ -56,7 +56,7 @@ public class MainActivity extends Activity {
 			Log.i("Main", "Before Change URL List");
 			//this.changeUrl(this.newUrl);
 			Log.i("Main", "Before Change Webpage");
-			//this.changeWebpage(this.newUrl);
+			this.changeWebpage(this.newUrl);
 			Toast.makeText(this, this.newUrl, Toast.LENGTH_SHORT).show();
 		}
 		
