@@ -44,5 +44,5 @@ public class MyWebFragment extends Fragment {
 			Log.i("Web Frag", "after load");
 		}
 	}
-
+	
 }

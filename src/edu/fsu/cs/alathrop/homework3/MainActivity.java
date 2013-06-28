@@ -55,9 +55,11 @@ public class MainActivity extends Activity {
 			this.newUrl = this.urlConverter(newUrl);
 			//this.changeUrl(this.newUrl);
 			Log.i("Main", "Before Change Webpage");
-			this.changeWebpage(this.newUrl);
-			//Toast.makeText(this, this.newUrl, Toast.LENGTH_SHORT).show();
+			//this.changeWebpage(this.newUrl);
+			Toast.makeText(this, this.newUrl, Toast.LENGTH_SHORT).show();
 		}
+		
+		Log.i("Main", "After bundle");
 	}
 
 	@Override
