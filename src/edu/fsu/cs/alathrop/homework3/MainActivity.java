@@ -3,41 +3,110 @@ package edu.fsu.cs.alathrop.homework3;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
-	
+
 	public String newUrl;
+	public String selectedUrl;
+
+	urlReceiver receiver;
+
+	FragmentManager manager1;
+	FragmentTransaction trans1;
+	UrlListFragment fragment1;
+	FragmentManager manager2;
+	FragmentTransaction trans2;
+	MyWebFragment fragment2;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		newUrl = "www.ign.com";
-		
-		FragmentManager manager1 = getFragmentManager();
-		FragmentTransaction trans1 = manager1.beginTransaction();
-		UrlListFragment fragment1 = new UrlListFragment();
-		trans1.add(R.id.urllist, fragment1, "url_fragment");
-		fragment1.user_Url = "www.ign.com";
-		fragment1.setUrl(newUrl);
-		trans1.commit();
-		
-		FragmentManager manager2 = getFragmentManager();
-		FragmentTransaction trans2 = manager2.beginTransaction();		
-		MyWebFragment fragment2 = new MyWebFragment();
-		trans2.add(R.id.webfragment, fragment2, "web_fragment");
-		trans2.commit();
 
+		this.receiver = new urlReceiver();
+
+		this.manager1 = this.getFragmentManager();
+		this.trans1 = this.manager1.beginTransaction();
+		this.fragment1 = new UrlListFragment();
+		this.trans1.add(R.id.urllist, this.fragment1, "url_fragment");
+		this.trans1.commit();
+
+		this.manager2 = this.getFragmentManager();
+		this.trans2 = this.manager2.beginTransaction();
+		this.fragment2 = new MyWebFragment();
+		this.trans2.add(R.id.webfragment, this.fragment2, "web_fragment");
+		this.trans2.commit();
+
+		Intent intent = this.getIntent();
+
+		Bundle bundle = intent.getExtras();
+
+		IntentFilter filter = new IntentFilter(Intent.ACTION_MAIN);
+		this.registerReceiver(this.receiver, filter);
+
+		if (bundle != null) {
+			this.newUrl = bundle.getString("newUrl");
+			this.newUrl = this.urlConverter(newUrl);
+			//this.changeUrl(this.newUrl);
+			Log.i("Main", "Before Change Webpage");
+			this.changeWebpage(this.newUrl);
+			//Toast.makeText(this, this.newUrl, Toast.LENGTH_SHORT).show();
+		}
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		this.getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+
+	public String urlConverter(String oldUrl) {
+		if (oldUrl.startsWith("http://"))
+			return oldUrl;
+		else if (oldUrl.startsWith("https://"))
+			return oldUrl;
+		else
+			return "http://" + oldUrl;
+	}
+
+	public void changeWebpage(String url) {
+		this.selectedUrl = url;
+
+		this.fragment2.navigate(selectedUrl);
+	}
+
+	public void changeUrl(String url) {
+		this.fragment1.setUrl(url);
+
+		this.fragment1.getListView().invalidateViews();
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+	}
+	
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		Log.i("onDestroy", "before unReg");
+		
+		if (this.receiver != null)
+			this.unregisterReceiver(this.receiver);
+		
+		Log.i("onDestroy", "after unReg");
 	}
 
 }

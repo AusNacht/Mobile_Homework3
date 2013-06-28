@@ -8,6 +8,7 @@
         android:minSdkVersion="14"
         android:targetSdkVersion="14" />
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
 
     <application
         android:allowBackup="true"
@@ -34,7 +35,12 @@
         <activity
             android:name="edu.fsu.cs.alathrop.homework3.MyWebFragment"
             android:label="@string/title_activity_my_web_fragment" >
-        </activity> 
+        </activity>
+        <receiver android:name="urlReceiver">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver> 
     </application>
 
 </manifest>
