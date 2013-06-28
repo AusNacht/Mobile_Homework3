@@ -3,6 +3,8 @@ package edu.fsu.cs.alathrop.homework3;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -54,11 +56,17 @@ public class MainActivity extends Activity {
 			this.newUrl = bundle.getString("newUrl");
 			this.newUrl = this.urlConverter(newUrl);
 			Log.i("Main", "Before Change URL List");
-			//this.changeUrl(this.newUrl);
+			this.changeUrl(this.newUrl);
 			Log.i("Main", "Before Change Webpage");
-			this.changeWebpage(this.newUrl);
+			//this.changeWebpage(this.newUrl);
 			Toast.makeText(this, this.newUrl, Toast.LENGTH_SHORT).show();
 		}
+		
+		/*
+		IntentFilter filter2 = new IntentFilter();
+		filter2.addAction("ed.fsu.cs.alathrop.broadcast_close");
+		registerReceiver(receiver2, filter2);
+		*/
 		
 		Log.i("Main", "After bundle");
 	}
@@ -112,5 +120,22 @@ public class MainActivity extends Activity {
 		
 		Log.i("onDestroy", "after unReg");
 	}
-
+	
+	@Override
+	public void finish(){
+		super.finish();
+	}
+	
+	/*
+	BroadcastReceiver receiver2 = new BroadcastReceiver(){
+		@Override
+		public void onReceive(Context context, Intent intent){
+			finish();
+		}
+	};
+	
+	public void finish(){
+		super.finish();
+	};
+*/
 }

@@ -30,6 +30,13 @@ public class urlReceiver extends BroadcastReceiver {
 					Bundle extras = new Bundle();
 					extras.putString("newUrl", messages[0].getMessageBody());
 					myIntent.putExtras(extras);
+					
+					/*
+					Intent local = new Intent();
+					local.setAction("ed.fsu.cs.alathrop.broadcast_close");
+					context.sendBroadcast(local);
+					*/
+					
 					context.startActivity(myIntent);
 				}
 			}
