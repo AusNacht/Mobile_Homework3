@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		this.receiver = new urlReceiver();
-
+		
 		this.manager1 = this.getFragmentManager();
 		this.trans1 = this.manager1.beginTransaction();
 		this.fragment1 = new UrlListFragment();
@@ -82,13 +82,14 @@ public class MainActivity extends Activity {
 	public void changeWebpage(String url) {
 		this.selectedUrl = url;
 
-		this.fragment2.navigate(selectedUrl);
+		this.fragment2.navigate(this.selectedUrl);
 	}
 
 	public void changeUrl(String url) {
 		this.fragment1.setUrl(url);
-
+		Log.i("Main", "after changing array, before updating url view");
 		this.fragment1.getListView().invalidateViews();
+		Log.i("Main", "after updating url view");
 	}
 
 	@Override

@@ -24,7 +24,12 @@ public class MyWebFragment extends Fragment {
 		}
 		
 		this.webs = new WebView(this.getActivity());
-		this.webs.setWebViewClient(new MyWebViewClient());
+		this.webs.setWebViewClient(new WebViewClient(){
+			@Override
+			public boolean shouldOverrideUrlLoading(WebView view, String url){
+				return false;
+			}
+		});
 		this.webs.loadUrl(this.website);
 
 		return this.webs;
@@ -44,6 +49,14 @@ public class MyWebFragment extends Fragment {
 		Log.i("Web Frag", "Before If");
 		if (!newUrl.isEmpty()){
 			Log.i("Web Frag", "Before load");
+			/*
+			this.webs.setWebViewClient(new WebViewClient(){
+				@Override
+				public boolean shouldOverrideUrlLoading(WebView view, String url){
+					return false;
+				}
+			});
+			*/
 			this.webs.loadUrl(newUrl);
 			Log.i("Web Frag", "after load");
 		}

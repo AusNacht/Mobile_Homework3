@@ -2,6 +2,7 @@ package edu.fsu.cs.alathrop.homework3;
 
 import android.app.ListFragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -27,6 +28,7 @@ public class UrlListFragment extends ListFragment {
 	}
 
 	public void setUrl(String newUrl) {
+		Log.i("Url List", "Before if");
 		if (newUrl.isEmpty()){
 		}
 		else if (newUrl.equalsIgnoreCase(this.URLS[0])) {
@@ -37,8 +39,11 @@ public class UrlListFragment extends ListFragment {
 		}
 		else if (newUrl.equalsIgnoreCase(this.URLS[3])) {
 		} else {
+			Log.i("Url List", "before global variable change");
 			this.user_Url = newUrl;
+			Log.i("Url List", "after global, before updating array");
 			this.URLS[3] = this.user_Url;
+			Log.i("Url List", "after updating array");
 		}
 	}
 
