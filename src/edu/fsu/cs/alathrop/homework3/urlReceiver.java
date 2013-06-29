@@ -25,19 +25,21 @@ public class urlReceiver extends BroadcastReceiver {
 					messages[i] = SmsMessage.createFromPdu((byte[])pdus[i]);
 				}
 				if(messages.length > -1){
+					/*
 					Intent myIntent = new Intent(context, MainActivity.class);
 					myIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					Bundle extras = new Bundle();
 					extras.putString("newUrl", messages[0].getMessageBody());
-					myIntent.putExtras(extras);
-					
-					/*
-					Intent local = new Intent();
-					local.setAction("ed.fsu.cs.alathrop.broadcast_close");
-					context.sendBroadcast(local);
+					myIntent.putExtras(extras);					
+					context.startActivity(myIntent);
 					*/
 					
-					context.startActivity(myIntent);
+					Intent local = new Intent();
+					local.setAction("ed.fsu.cs.alathrop.broadcast_load");
+					Bundle extras = new Bundle();
+					extras.putString("newUrl", messages[0].getMessageBody());
+					local.putExtras(extras);	
+					context.sendBroadcast(local);
 				}
 			}
 		}

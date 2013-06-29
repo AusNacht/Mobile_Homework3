@@ -56,17 +56,15 @@ public class MainActivity extends Activity {
 			this.newUrl = bundle.getString("newUrl");
 			this.newUrl = this.urlConverter(newUrl);
 			Log.i("Main", "Before Change URL List");
-			this.changeUrl(this.newUrl);
+			//this.changeUrl(this.newUrl);
 			Log.i("Main", "Before Change Webpage");
 			//this.changeWebpage(this.newUrl);
 			Toast.makeText(this, this.newUrl, Toast.LENGTH_SHORT).show();
 		}
 		
-		/*
 		IntentFilter filter2 = new IntentFilter();
-		filter2.addAction("ed.fsu.cs.alathrop.broadcast_close");
+		filter2.addAction("ed.fsu.cs.alathrop.broadcast_load");
 		registerReceiver(receiver2, filter2);
-		*/
 		
 		Log.i("Main", "After bundle");
 	}
@@ -99,6 +97,15 @@ public class MainActivity extends Activity {
 		this.fragment1.getListView().invalidateViews();
 		Log.i("Main", "after updating url view");
 	}
+	
+	public void loadNewUrl(String url){
+		newUrl = url;
+		this.newUrl = this.urlConverter(newUrl);
+		Log.i("Main", "Before Change URL List");
+		this.changeUrl(this.newUrl);
+		Log.i("Main", "Before Change Webpage");
+		this.changeWebpage(this.newUrl);
+	}
 
 	@Override
 	public void onPause() {
@@ -126,14 +133,18 @@ public class MainActivity extends Activity {
 		super.finish();
 	}
 	
-	/*
+
 	BroadcastReceiver receiver2 = new BroadcastReceiver(){
 		@Override
 		public void onReceive(Context context, Intent intent){
-			finish();
+			Bundle bundle = intent.getExtras();
+
+			if (bundle != null) {
+				loadNewUrl(bundle.getString("newUrl"));
+			}
 		}
 	};
-	
+/*	
 	public void finish(){
 		super.finish();
 	};
