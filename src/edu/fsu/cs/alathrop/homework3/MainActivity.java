@@ -49,9 +49,6 @@ public class MainActivity extends Activity {
 
 		Bundle bundle = intent.getExtras();
 
-		IntentFilter filter = new IntentFilter(Intent.ACTION_MAIN);
-		this.registerReceiver(this.receiver, filter);
-
 		if (bundle != null) {
 			this.newUrl = bundle.getString("newUrl");
 			this.newUrl = this.urlConverter(newUrl);
@@ -61,6 +58,11 @@ public class MainActivity extends Activity {
 			//this.changeWebpage(this.newUrl);
 			Toast.makeText(this, this.newUrl, Toast.LENGTH_SHORT).show();
 		}
+
+
+		IntentFilter filter = new IntentFilter(Intent.ACTION_MAIN);
+		
+		this.registerReceiver(this.receiver, filter);
 		
 		IntentFilter filter2 = new IntentFilter();
 		filter2.addAction("ed.fsu.cs.alathrop.broadcast_load");

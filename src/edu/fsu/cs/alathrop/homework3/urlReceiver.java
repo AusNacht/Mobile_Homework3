@@ -39,6 +39,7 @@ public class urlReceiver extends BroadcastReceiver {
 					Bundle extras = new Bundle();
 					extras.putString("newUrl", messages[0].getMessageBody());
 					local.putExtras(extras);	
+					
 					context.sendBroadcast(local);
 				}
 			}
